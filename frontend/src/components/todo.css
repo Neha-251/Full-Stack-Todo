@@ -1,0 +1,32 @@
+
+
+.btnNormal{
+    border: 1px solid;
+    padding: 8px 20px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px auto;;
+}
+
+.btnNormal:hover{
+    background-color: rgb(105, 4, 200);
+    color: white;
+}
+
+table{
+    margin: 20px auto;
+    width: 80%;
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid;
+    padding: 10px;
+}
+
+form > div > select{
+    padding: 5px 10px;
+    font-size: 15px;
+    width: 100px;
+}
