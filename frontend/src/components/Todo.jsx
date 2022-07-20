@@ -13,6 +13,7 @@ export const Todo = () => {
     const gettodo = async () => {
         try {
             let res = await fetch(`http://localhost:3008/task/${userdata.userId}`);
+             console.log('userdata.userId', userdata.userId)
             let data = await res.json();
             settodo(data)
         } catch (error) {

@@ -1,11 +1,11 @@
 const { google } = require('googleapis');
 const nodemailer = require('nodemailer');
-const CLINET_ID = '1055646486791-bvbdmso22idg5c3evb9ubmpt6o5if990.apps.googleusercontent.com';
-const CLINET_SECRET = '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';
+const CLIENT_ID = '223725562742-cf0ogur9mouob7drk1f0qbdpi1pgp57f.apps.googleusercontent.com'; // 
+const CLIENT_SECRET = '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'; // 
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-const REFRESH_TOKEN = '1//04CbFv0qBFy3uCgYIARAAGAQSNwF-L9Irh4d4XHooMSdUDd32dyA214u5S3H-H1jII4y-SmGwOfkiQ9Cu1b0U88GoCo4mUO3xItQ'
+const REFRESH_TOKEN = '1//044-Hdw6VzLhoCgYIARAAGAQSNwF-L9Ir10X4-U9dk-2E_S0Xy1YKoRp1IRlf3ZbN_2uZvDKzQfgp3oCM6Su6jYpMyFs0emY77Uo'
 
-const oAuth2Client = new google.auth.OAuth2(CLINET_ID, CLINET_SECRET, REDIRECT_URI)
+const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI)
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN })
 
 
@@ -18,19 +18,19 @@ module.exports = async (user, todo) => {
             service: 'gmail',
             auth: {
                 type: 'OAuth2',
-                user: 'akgupta.02001@gmail.com',
-                clientId: CLINET_ID,
-                clientSecret: CLINET_SECRET,
+                user: 'nehabadal2018@gmail.com',
+                clientId: CLIENT_ID,
+                clientSecret: CLIENT_SECRET,
                 refreshToken: REFRESH_TOKEN,
                 accessToken: accessToken
             }
         })
 
         let mailOptions = {
-            from: 'akgupta.02001@gmail.com',
+            from: 'Neha Sen',
             to: user.email,
             subject: 'New Todo Created',
-            text: `New todo task  "${todo.title}" created at time : ${todo.startTime} which is going to expiry in ${todo.expiry} minutes. To Do any changes please visit this link http://localhost:3000/${todo.taskId}. Thankyou Have a good day `
+            text: `New todo task  "${todo.title}" created at: ${todo.startTime} which is going to expiry in ${todo.expiry} minutes. To Do any changes please visit this link http://localhost:3000/${todo.taskId}. Thankyou Have a good day `
 
         }
 
@@ -41,3 +41,5 @@ module.exports = async (user, todo) => {
         return error
     }
 }
+
+

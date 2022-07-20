@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
 app.use(express.json())
-// app.use(cors);
 const userHandler = require("./controllers/userhandle");
 const taskHandler = require("./controllers/taskhandle");
 const { login, register } = require("./Authentication/auth");

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./user.css";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
@@ -28,9 +28,12 @@ export const Register = ({ logout }) => {
                 body: JSON.stringify(reg)
             })
             let data = await response.json()
-            console.log(data)
-            data.message ? window.alert(data.message) : localStorage.setItem("usercred", JSON.stringify(data))
-            if (!data.message) {
+            console.log("data", data)
+          
+
+            if (data) {
+                
+                localStorage.setItem("usercred", JSON.stringify(data))
                 window.alert("Registration done")
                 logout(true)
                 navigate(`/todo`, { replace: false });
@@ -43,10 +46,20 @@ export const Register = ({ logout }) => {
             })
 
         } catch (error) {
-            window.alert(error.message)
+            window.alert("error", error.message)
             console.log(error)
         }
     }
+
+    useEffect(()=> {
+        let psw = document.getElementById("psw");
+        if(pswVisible){
+            psw.type = "text"
+        } else {
+            psw.type = "password"
+        }
+
+    }, [pswVisible])
 
 
     return <div className="register_mainDiv">
